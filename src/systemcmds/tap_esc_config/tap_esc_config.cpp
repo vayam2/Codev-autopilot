@@ -661,12 +661,7 @@ int tap_esc_config_main(int argc, char *argv[]) {
 
 	} else if (!strcmp(argv[myoptind], "upload")) {
 		myoptind += 1;
-
-		if (!strcmp(argv[myoptind], "ST")) {
-			return upload_firmware(&firmware_paths[0], device, num_escs);
-		} else if(!strcmp(argv[myoptind], "GD")){
-			return upload_firmware(&firmware_paths[1], device, num_escs);
-		}
+		return upload_firmware(&firmware_paths[1], device, num_escs);
 	} else if (!strcmp(argv[myoptind], "update_fw")) {
 		return update_fw(&firmware_paths[0], device, num_escs);
 
