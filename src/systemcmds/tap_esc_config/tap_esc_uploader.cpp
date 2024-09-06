@@ -297,16 +297,13 @@ TAP_ESC_UPLOADER::upload(const char *filenames[])
 int
 TAP_ESC_UPLOADER::log_versions()
 {
-	param_t param_esc_fw_ver = param_find("ESC_FW_VER");
-	param_t param_esc_hw_ver = param_find("ESC_HW_VER");
-	param_t param_esc_bl_ver = param_find("ESC_BL_VER");
 
-	if (param_esc_fw_ver == PARAM_INVALID ||
-	    param_esc_hw_ver == PARAM_INVALID ||
-	    param_esc_bl_ver == PARAM_INVALID) {
-		PX4_WARN("Cannot find one or more parameters, unable to log ESC versions.");
-		return -1;
-	}
+	// if (param_esc_fw_ver == PARAM_INVALID ||
+	//     param_esc_hw_ver == PARAM_INVALID ||
+	//     param_esc_bl_ver == PARAM_INVALID) {
+	// 	PX4_WARN("Cannot find one or more parameters, unable to log ESC versions.");
+	// 	return -1;
+	// }
 
 	int ret = tap_esc_common::initialise_uart(_device, _esc_fd);
 
@@ -352,9 +349,9 @@ TAP_ESC_UPLOADER::log_versions()
 		bl_ver = 0; // version 0 means unknown
 	}
 
-	param_set(param_esc_fw_ver, &fw_ver);
-	param_set(param_esc_hw_ver, &hw_ver);
-	param_set(param_esc_bl_ver, &bl_ver);
+	// param_set(param_esc_fw_ver, &fw_ver);
+	// param_set(param_esc_hw_ver, &hw_ver);
+	// param_set(param_esc_bl_ver, &bl_ver);
 
 	return ret;
 }
@@ -771,6 +768,23 @@ TAP_ESC_UPLOADER::get_esc_versions(uint8_t esc_id, uint32_t &fw_ver, uint32_t &h
 		fw_ver = _uploader_packet.d.esc_version_packet.FwRev;
 		hw_ver = _uploader_packet.d.esc_version_packet.HwRev;
 		bl_ver = _uploader_packet.d.esc_version_packet.blRev;
+		PX4_INFO("Get Esc Firmware Version: fw_ver: %d, hw_ver: %d bl_ver:%d",
+			 fw_ver, hw_ver, bl_ver);
+
+		char pname[16];
+		sprintf(pname, "ESC_%u_VER", esc_id);
+		param_set(param_find(pname), &fw_ver);
+
+		int32_t temp = 0;
+
+		for (int i = 0; i < 4; i++) {
+			sprintf(pname, "ESC_%u_VER", i);
+			param_get(param_find(pname), &temp);
+
+			if (temp == 0) {
+				param_set(param_find(pname), &fw_ver);
+			}
+		}
 
 	} else if (_uploader_packet.msg_id == PROTO_FAILED) {
 		PX4_INFO("Failed to get ESC versions, ESC ID: 0x%02x, we sent to ID: 0x%02x, FwRev: 0x%02x",
