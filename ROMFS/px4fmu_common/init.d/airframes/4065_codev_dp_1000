@@ -24,7 +24,7 @@ set OUTPUT_MODE tap_esc
 set VEHICLE_TYPE mc
 sh /etc/init.d/rc.mc_defaults
 
-set PARAM_DEFAULTS_VER 4
+set PARAM_DEFAULTS_VER 5
 set MIXER quad_x
 
 if param compare SYS_PARAM_VER ${PARAM_DEFAULTS_VER}
@@ -134,11 +134,12 @@ then
 	param set COM_DISARM_PRFLT 10.0
 	param set COM_HOME_IN_AIR 1
 	param set COM_MOD_SLOT_EN 1
+	param set COM_MOD_SHOW 38
 
 
-	param set RC_MAP_THROTTLE 2
+	param set RC_MAP_THROTTLE 3
 	param set RC_MAP_ROLL 1
-	param set RC_MAP_PITCH 3
+	param set RC_MAP_PITCH 2
 	param set RC_MAP_YAW 4
 	param set RC_MAP_FLTMODE 5
 	param set RC_MAP_RETURN_SW 7
@@ -261,3 +262,5 @@ fi
 # fi
 
 tap_esc start -d ${ESC_TTY} -n 4
+
+tap_esc_config log_versions -d /dev/ttyS4 -n 4
