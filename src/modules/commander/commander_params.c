@@ -1037,3 +1037,44 @@ PARAM_DEFINE_INT32(COM_ARM_ARSP_EN, 1);
  * @value 2 Enforce SD card presence
  */
 PARAM_DEFINE_INT32(COM_ARM_SDCARD, 1);
+
+
+/**
+ *  Show the valid can be used mode
+ *
+ * Set bits in the following mode to enable:
+ * 0 : Mode MANUAL
+ * 1 : Mode ALTCTL
+ * 2 : Mode POSCTL
+ * 3 : Mode MISSION
+ * 4 : Mode LOITER
+ * 5 : Mode RTL
+ * 14 : Mode OFFBOARD
+ * 15 : Mode STAB
+ * 17 : Mode TAKEOFF
+ * 18 : Mode LAND
+ * 19 : Mode FOLLOW_ME
+ * 20 : Mode PREC_LAND
+ * 21 : Mode ORBIT
+ * 22 : Mode SPORT
+ *
+ * @group Commander
+ * @min 0
+ * @max 2147483647
+ * @bit 0 Mode MANUAL
+ * @bit 1 Mode ALTCTL
+ * @bit 2 Mode POSCTL
+ * @bit 3 Mode MISSION
+ * @bit 4 Mode LOITER
+ * @bit 5 Mode RTL
+ * @bit 14 Mode OFFBOARD
+ * @bit 15 Mode STAB
+ * @bit 17 Mode TAKEOFF
+ * @bit 18 Mode LAND
+ * @bit 19 Mode FOLLOW_ME
+ * @bit 20 Mode PREC_LAND
+ * @bit 21 Mode ORBIT
+ * @bit 22 Mode SPORT
+ * @bit 23 Mode SLOW
+ */
+PARAM_DEFINE_INT32(COM_MOD_SHOW, 8388646);

@@ -312,6 +312,46 @@ MavlinkParametersManager::send()
 		param_find("TRIG_MODE");
 		param_find("UAVCAN_ENABLE");
 
+		param_find("PHL_SER1_BAUD");
+		param_find("PHL_SER2_BAUD");
+		param_find("PHL_SER3_BAUD");
+		param_find("PHL_SER4_BAUD");
+		param_find("PHL_SER5_BAUD");
+		param_find("PHL_F2_BAUD");
+		param_find("PHL_UDP_IP_1");
+		param_find("PHL_UDP_IP_2");
+		param_find("PHL_UDP_IP_3");
+		param_find("PHL_UDP_IP_LC_4");
+
+
+		param_find("PHL_UDP1_IP");
+		param_find("PHL_UDP2_IP");
+		param_find("PHL_UDP3_IP");
+		param_find("PHL_UDP4_IP");
+		param_find("PHL_UDP5_IP");
+		param_find("PHL_UDP6_IP");
+		param_find("PHL_UDP7_IP");
+
+		param_find("PHL_UDP1_PORT");
+		param_find("PHL_UDP2_PORT");
+		param_find("PHL_UDP3_PORT");
+		param_find("PHL_UDP4_PORT");
+		param_find("PHL_UDP5_PORT");
+		param_find("PHL_UDP6_PORT");
+		param_find("PHL_UDP7_PORT");
+
+
+		param_find("PHL_D1A_CHL");
+		param_find("PHL_D1B_CHL");
+		param_find("PHL_D2A_CHL");
+		param_find("PHL_D2B_CHL");
+
+		param_find("PHL_D1A_MODE");
+		param_find("PHL_D1B_MODE");
+		param_find("PHL_D2A_MODE");
+		param_find("PHL_D2B_MODE");
+		param_find("PHL_FUN_EN");
+		param_find("COM_MOD_SHOW");
 		_first_send = true;
 	}
 
