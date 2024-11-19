@@ -113,7 +113,7 @@ void WorkerThread::threadEntry()
 
 	case Request::MagCalibration:
 		_ret_value = do_mag_calibration(&_mavlink_log_pub);
-
+/*
 		if (_ret_value == PX4_OK) {
 			if (px4_reboot_request(false, 1000 * 1000) == 0) {
 				set_tune(tune_control_s::TUNE_ID_SHUTDOWN);
@@ -122,7 +122,7 @@ void WorkerThread::threadEntry()
 				while (1) { px4_usleep(1); }
 			}
 		}
-
+*/
 		break;
 
 	case Request::RCTrimCalibration:
